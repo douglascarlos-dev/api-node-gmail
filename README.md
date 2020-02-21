@@ -1,4 +1,4 @@
-![Logo API](https://github.com/douglascsoliveira/api-node-gmail/logo01.png)
+![Logo API](./logo01.png)
 
 # API para envio de e-mail usando NodeJs e Gmail
 
@@ -43,13 +43,34 @@ Node.Js: Caso não tenha, basta realizar o download [Aqui](https://nodejs.org/en
 
 ### Obtendo uma cópia:
 
-git clone https://github.com/douglascsoliveira/api-node-gmail
+```shell
+# Antes de tudo, clone o projeto
+$ git clone https://github.com/douglascsoliveira/api-node-gmail
+```
 
 ### Configuração:
 
-cd api-node-gmail
-npm install
+```shell
+# Entre na pasta do projeto
+$ cd api-node-gmail
+
+# Instale as dependencias
+$ npm install
+```
 
 ### Execução:
 
-node app.js
+```shell
+# Execute o projeto
+$ node app.js
+```
+
+### Usando o Gmail
+
+Embora o Gmail seja a maneira mais rápida de começar a enviar e-mails, não é uma solução preferível, a menos que você esteja usando a autenticação OAuth2. O Gmail espera que o usuário seja um usuário real e não um robô, portanto, ele executa muitas heurísticas a cada tentativa de login e bloqueia qualquer coisa que pareça suspeita para defender o usuário de tentativas de invasão de conta. Por exemplo, você pode ter problemas se o servidor estiver em outro local geográfico - tudo funciona em sua máquina de desenvolvimento, mas as mensagens são bloqueadas na produção.
+
+Além disso, o Gmail criou o conceito de aplicativos ["Menos seguros"](https://support.google.com/accounts/answer/6010255?hl=pt-br), basicamente qualquer pessoa que usa uma senha simples para fazer login no Gmail; portanto, você pode acabar em uma situação em que um nome de usuário pode enviar e-mails (o suporte para aplicativos "menos seguros" é ativado), mas outro está bloqueado (o suporte para aplicativos "menos seguros" está desativado). Você pode configurar sua conta do Gmail para permitir aplicativos menos seguros [aqui](https://www.google.com/settings/security/lesssecureapps) . Ao usar esse método, certifique-se de ativar também a funcionalidade necessária, concluindo o desafio [“Captcha Enable”](https://accounts.google.com/b/0/displayunlockcaptcha) . Sem isso, conexões menos seguras provavelmente não funcionariam.
+
+Se você estiver usando o 2FA, terá que criar uma senha ["Específica do Aplicativo"](https://security.google.com/settings/security/apppasswords) para que o Nodemailer funcione.
+
+O Gmail tem um limite de 500 destinatários por dia.

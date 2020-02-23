@@ -2,7 +2,7 @@
 
 # API para envio de e-mail usando NodeJs e Gmail
 
-Código usado no formulário de contato do meu site [www.douglascarlos.dev](https://www.douglascarlos.dev)
+Código usado pelo formulário de contato do meu site [www.douglascarlos.dev](https://www.douglascarlos.dev)
 
 ## Recursos usados no desenvolvimento:
 
@@ -21,13 +21,11 @@ http://localhost:3000     |       POST            | raw/JSON                    
 
 ```json
 {
-  "user": [
-    {
-      "name": "SEU NOME",
-      "email": "SEU@EMAIL.COM",
-      "message": "SUA MENSAGEM"
-    }
-  ]
+   "user":{
+      "name":"SEU NOME",
+      "email":"SEU@EMAIL.COM",
+      "message":"SUA MENSAGEM"
+   }
 }
 ```
 

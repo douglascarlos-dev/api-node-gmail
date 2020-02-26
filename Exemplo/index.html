@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-br"> 
+<head>
+  <title>Douglas Carlos </title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+    var $form = $("#form"); // saving the attribute name in a variable 
+     
+    $form.submit(function( event ) {
+      $form.hide();  // hides the html form 
+      $("#loader").show(); // display the hidden loader 
+      $.ajax({
+        url:'http://127.0.0.1:3000',  // here is the url to which data is submitted 
+        data:$(this).serialize(),  // serialize function collectes all fields data in a form 
+        type:'post', // submission is set to post method */
+        success:function(response){
+          $("#loader").hide(); 
+          $form.show(); 
+          $form.find("input, textarea").val("");  // empty the input fields after submitting data 
+          $("#response").html(response).show().delay(3000).fadeOut('slow');  // shows the result of submitted data 
+        }
+      });
+      event.preventDefault(); // prevents the page from reloading after submit button clicked 
+    });
+    });
+    </script>
+    
+    <style>
+    #loader{
+        display:none;
+    }
+    </style>
+
+</head>
+<body>
+  <div id="response"></div>
+
+  <form class="form-horizontal" id="form">
+    <div id="msgSubmit" class="h3 text-center hidden"></div>
+    <div class="row">
+      <div class="col-sm-12">Nome:<br>
+        <input name="user[name]" class="contact-name" id="user[name]" type="text" placeholder="Nome" required="">
+      </div>
+
+      <div class="col-sm-12">E-mail:<br>
+        <input name="user[email]" class="contact-subject" id="user[email]" type="email" placeholder="E-mail" required="">
+      </div>
+
+      <div class="col-sm-12">Mensagem:<br>
+        <textarea class="contact-message" id="user[message]" name="user[message]" rows="6" placeholder="Messagem" required=""></textarea>
+      </div>
+
+      <div class="btn-form col-sm-12">
+        <button type="submit" id="form-submit">Enviar</button>
+      </div>
+    </div>
+  </form>
+
+<div id="loader"><img src="Spinner.gif" class="center-block"></div>
+
+</body>
+
+</html>

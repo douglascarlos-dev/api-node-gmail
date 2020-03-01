@@ -21,7 +21,7 @@
           $("#loader").hide(); 
           $form.show(); 
           $form.find("input, textarea").val("");  // empty the input fields after submitting data 
-          $("#response").html(response).show().delay(3000).fadeOut('slow');  // shows the result of submitted data 
+          $("#response").html(response).show().delay(9000).fadeOut('slow');  // shows the result of submitted data 
         }
       });
       event.preventDefault(); // prevents the page from reloading after submit button clicked 
@@ -37,28 +37,38 @@
 
 </head>
 <body>
-  <div id="response"></div>
-
-  <form class="form-horizontal" id="form">
-    <div id="msgSubmit" class="h3 text-center hidden"></div>
-    <div class="row">
-      <div class="col-sm-12">Nome:<br>
-        <input name="user[name]" class="contact-name" id="user[name]" type="text" placeholder="Nome" required="">
+  <br>
+  <div class="container">
+    <div id="response"></div>
+  <form class="was-validated" id="form">
+    <div class="mb-3">
+      
+      <div class="form-group">
+        <label for="InputNome">Nome</label>
+        <input name="user[name]" class="form-control" id="user[name]" aria-describedby="user[name]" type="text" placeholder="Seu nome" required>
+        <div class="invalid-feedback">
+          Escreva o seu nome.
+        </div>
       </div>
-
-      <div class="col-sm-12">E-mail:<br>
-        <input name="user[email]" class="contact-subject" id="user[email]" type="email" placeholder="E-mail" required="">
+      <div class="form-group">
+        <label for="InputEmail">Endereço de email</label>
+        <input name="user[email]" class="form-control" id="user[email]" aria-describedby="user[email]" type="email" placeholder="Seu email" required>
+        <div class="invalid-feedback">
+          Escreva o seu email.
+        </div>
+        <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
       </div>
-
-      <div class="col-sm-12">Mensagem:<br>
-        <textarea class="contact-message" id="user[message]" name="user[message]" rows="6" placeholder="Messagem" required=""></textarea>
-      </div>
-
-      <div class="btn-form col-sm-12">
-        <button type="submit" id="form-submit">Enviar</button>
+      <div class="form-group">
+        <label for="FormControlTextarea">Mensagem</label>
+        <textarea class="form-control" id="user[message]" name="user[message]" rows="6" placeholder="Messagem" required></textarea>
+        <div class="invalid-feedback">
+          Digite uma mensagem na área de texto.
+        </div>
       </div>
     </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
+</div>
 
 <div id="loader"><img src="Spinner.gif" class="center-block"></div>
 
